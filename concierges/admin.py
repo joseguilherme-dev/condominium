@@ -1,3 +1,4 @@
 from django.contrib import admin
+from concierges.models import Concierge
 
-# Register your models here.
+admin.site.register(Concierge)
