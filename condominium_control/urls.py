@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 import users.views
+import visitors.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', users.views.index, name="index"),
+    path('registrar-visitante/', visitors.views.register_visitor, name="registrar-visitante"),
 ]
