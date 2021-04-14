@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<style>
+  .card {
+    box-shadow: 0px 0px 15px rgba(0,0,0,.2);
+  }
+</style>
+
+<div class="offset-3 col-9 bg-light text-dark">
+  <div class="p-4 pb-0">
+    <h4 class="text-muted"><strong>Visitante</strong></h4>
+    <hr>
+  </div>
+
+  <div class="row p-4">
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <h4 class="text-primary">Informações gerais:</h4>
+        <br>
+
+        <div class="row my-2">
+            <div class="col-5">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome do Visitante:</label>
+                        <input type="text" class="form-control" value="{{visitor.complete_name}}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>CPF:</label>
+                        <input type="text" class="form-control" value="{{visitor.cpf}}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data de Nascimento:</label>
+                        <input type="text" class="form-control" value="{{visitor.birthday_date}}" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row my-2">
+            <div class="col-6">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Horário de Entrada:</label>
+                        <input type="text" class="form-control" value="{{visitor.entrance_hour}}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Horário de Saída:</label>
+                        <input type="text" class="form-control" value="{% if visitor.exit_hour %} {{visitor.exit_hour}} {% endif %}" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Casa visitada:</label>
+                        <input type="text" class="form-control" value="{{visitor.house_num}}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Placa do Veículo:</label>
+                        <input type="text" class="form-control" value="{% if visitor.vehicle_plate %} {{visitor.vehicle_plate}} {% endif %}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Morador que autorizou entrada:</label>
+                        <input type="text" class="form-control" value="{{visitor.responsible_resident}}" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-12 text-center">
+                <small class="text-muted">CONCIERGE RESPONSÁVEL:<br>
+                    {{visitor.related_concierge}}</small>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+                
+{% endblock content %}
