@@ -22,5 +22,6 @@ import visitors.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', users.views.index, name="index"),
-    path('registrar-visitante/', visitors.views.register_visitor, name="registrar-visitante"),
+    path('visitantes/registrar-visitante/', visitors.views.register_visitor, name="registrar-visitante"),
+    path('visitantes/<int:id>/', visitors.views.visitor_informations, name="visitante"),
 ]
