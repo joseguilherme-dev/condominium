@@ -1,9 +1,120 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
 
-<div class="col-9">
-  Início
+<style>
+  .card {box-shadow: 0px 0px 15px rgba(0,0,0,.2);}
+
+  .a-card {border-left: 4px solid green;}
+  .a-card p {color: green;}
+
+  .b-card {border-left: 4px solid blue;}
+  .b-card p {color: blue;}
+
+  .c-card {border-left: 4px solid orange;}
+  .c-card p {color: orange;}
+</style>
+
+<div class="offset-3 col-9 bg-light text-dark">
+  <div class="p-4 pb-0">
+    <div class="row m-0 p-0">
+      <div class="col-6 m-0 p-0">
+        <h4 class="text-muted mb-0"><strong>Início</strong></h4>
+      </div>
+      <div class="col-6 m-0 p-0 d-flex align-items-center justify-content-end">
+        <a href="{% url 'registrar-visitante' %}" class="btn btn-primary btn-icon-split btn-sm">
+          <span class="text">
+            Registrar novo visitante
+          </span>
+
+          <span class="ms-2 icon text-white-50">
+            <i class="fas fa-user-plus"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    
+    <hr>
+  </div>
+
+  <div class="row p-4">
+    <div class="col-4">
+      <div class="card a-card data-card">
+        <div class="card-body py-4">
+          <div class="row align-items-center">
+            <div class="col-9">
+              <p class="mb-0 fw-bold">Visitantes no condomínio:</p>
+              <h4 class="fw-bold text-dark">0</h4>
+            </div>
+            <div class="col-3">
+              <h2><i class="fas fa-users text-muted" style="opacity: 0.5;"></i></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card b-card data-card">
+        <div class="card-body py-4">
+          <div class="row align-items-center">
+            <div class="col-9">
+              <p class="mb-0 fw-bold">Visitantes no último mês:</p>
+              <h4 class="fw-bold text-dark">0</h4>
+            </div>
+            <div class="col-3">
+              <h2><i class="fas fa-user-clock text-muted" style="opacity: 0.5;"></i></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card c-card data-card">
+        <div class="card-body py-4">
+          <div class="row align-items-center">
+            <div class="col-9">
+              <p class="mb-0 fw-bold">Concierges cadastrados:</p>
+              <h4 class="fw-bold text-dark">0</h4>
+            </div>
+            <div class="col-3">
+              <h2><i class="fas fa-user-tie text-muted" style="opacity: 0.5;"></i></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-primary">Últimos visitantes:</h4><br>
+          
+          <table class="table text-secondary">
+            <thead>
+              <th scope="col">Nome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Horário de Entrada</th>
+              <th scope="col">Mais informações</th>
+            </thead>
+            <tbody>
+              {% for visitor in visitors %}
+              <tr>
+                <td>{{visitor.complete_name}}</td>
+                <td>{{visitor.cpf}}</td>
+                <td>{{visitor.entrance_hour}}</td>
+                <td><a href="{% url 'visitante' id=visitor.id %}">Mais informações</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
                 
 {% endblock content %}
